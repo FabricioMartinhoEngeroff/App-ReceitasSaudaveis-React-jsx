@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import search from "./search.png";
 
-const ConteinerEstilizado = styled.div`
+const ContainerEstilizado = styled.div`
 position: relative;
 display: inline-block;
 `
 
-const CampoEstilizado = styled.input`
+const CampoTextoEstilizado = styled.input`
 height: 56px;
 padding: 12px 16px;
 border-radius: 10px;
@@ -15,9 +16,9 @@ background: transparent;
 box-sizing: border-box;
 width: 566px;
 color: black;
-font-weight:400px;
+font-weight:400;
 font-size: 20px;
-line-height:20px
+line-height:20px;
 `;
 
 const IconeLupa = styled.img`
@@ -30,7 +31,12 @@ const IconeLupa = styled.img`
 
 
 const CampoTexto = (props) => {
-    return(
-<CampoEstilizado/>
-    )
-}
+  return (
+    <ContainerEstilizado>
+      <CampoTextoEstilizado {...props} />
+      <IconeLupa src={search} alt="ícone de lupa" />
+    </ContainerEstilizado>
+  );
+};
+
+export default CampoTexto;

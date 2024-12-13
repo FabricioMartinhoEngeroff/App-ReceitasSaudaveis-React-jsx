@@ -6,6 +6,9 @@ import Banner from "./componentes/Banner";
 import bannerBackground from "./assets/banner_image.png";
 import Galeria from "./componentes/Galeria";
 
+import fotos from './fotos.json';
+import { useState } from "preact/hooks";
+
 const FundoGradiente = styled.div`
   background: linear-gradient(
     174.61deg,
@@ -17,7 +20,6 @@ const FundoGradiente = styled.div`
   min-height: 100vh;
 `;
 
-
 const AppContainer = styled.div`
   width: 1440px;
   margin: 0 auto;
@@ -25,35 +27,36 @@ const AppContainer = styled.div`
 `;
 
 const MainContainer = styled.main`
-display: flex;
-gap: 24px;
+  display: flex;
+  gap: 24px;
 `;
 
 const ConteudoGaleria = styled.section`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-`
+`;
 
-export function App() {
+const App = () => {
+  const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos); 
   return (
-    <>
-      <FundoGradiente>
-        <EstilosGlobais />
-        <AppContainer>
-          <Cabecalho />
-          <MainContainer>
+    <FundoGradiente>
+      <EstilosGlobais />
+      <AppContainer>
+        <Cabecalho />
+        <MainContainer>
           <BarraLateral />
           <ConteudoGaleria>
-          <Banner
-            texto="Logevidade e Qualidade De Vida"
-            backgroundImage={bannerBackground}
-          />
-            <Galeria/>
+            <Banner
+              texto="A galeria mais completa de fotos do espaço!"
+              backgroundImage={bannerBackground}
+            />
+            <Galeria fotos={fotosDaGaleria} />
           </ConteudoGaleria>
-          </MainContainer>
-        </AppContainer>
-      </FundoGradiente>
-    </>
+        </MainContainer>
+      </AppContainer>
+    </FundoGradiente>
   );
-}
+};
+
+export default App;

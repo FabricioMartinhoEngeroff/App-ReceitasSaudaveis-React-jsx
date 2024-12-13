@@ -1,0 +1,22 @@
+[
+    {
+        "id": 0,
+        "titulo": "Todas"
+    },
+    {
+        "id": 1,
+        "titulo": "Café da Manhã"
+    },
+    {
+        "id": 2,
+        "titulo": "Lanches"
+    },
+    {
+        "id": 3,
+        "titulo": "Almoço e Jantar"
+    },
+    {
+        "id": 4,
+        "titulo": "Sobremesas"
+    }
+]

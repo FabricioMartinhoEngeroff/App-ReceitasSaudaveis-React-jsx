@@ -13,17 +13,21 @@ const ItemListaEstilizado = styled.li`
   gap: 22px;
 `;
 
-const ItemNavegacao = ({
-  children,
-  iconeAtivo,
-  iconeInativo,
-  ativo = false,
-}) => {
-  return (
-    <ItemListaEstilizado $ativo={ativo}>
-      <img src={ativo ? iconeAtivo : iconeInativo} alt="" />
-      <span>{children}</span>
-    </ItemListaEstilizado>
-  );
-};
-export default ItemNavegacao;
+const TextoComBorda = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  border: 2px solid #e591f1;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: #e591f1; 
+`;
+const ItemNavegacao = ({children, iconeAtivo, iconeInativo, ativo = false}) => {
+  return <ItemListaEstilizado  $ativo={ativo}>
+     <TextoComBorda>  <img src={ativo ? iconeAtivo : iconeInativo} alt="" />
+       {children}</TextoComBorda> 
+  </ItemListaEstilizado>
+  
+}
+
+export default ItemNavegacao

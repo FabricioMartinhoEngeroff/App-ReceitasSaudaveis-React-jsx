@@ -12,7 +12,7 @@ padding: 12px 16px;
 border-radius: 10px;
 border: 2px solid;
 border-color: #9b59b6;
-background: transparent;
+background-color: #edddef; 
 box-sizing: border-box;
 width: 566px;
 color: black;

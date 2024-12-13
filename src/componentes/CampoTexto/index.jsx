@@ -11,7 +11,7 @@ height: 56px;
 padding: 12px 16px;
 border-radius: 10px;
 border: 2px solid;
-border-color: green;
+border-color: #9b59b6;
 background: transparent;
 box-sizing: border-box;
 width: 566px;

@@ -24,10 +24,7 @@ const Rodape = styled.footer`
   justify-content: space-between;
   align-items: center;
 `;
-
 const Imagem = ({ foto, expandida = false, aoZoomSolicitado }) => {
-  
-
   return (
     <Figure $expandida={expandida} id={`foto-${foto.id}`}>
       <img src={foto.path} alt={foto.alt} />
@@ -36,14 +33,14 @@ const Imagem = ({ foto, expandida = false, aoZoomSolicitado }) => {
         <Rodape>
           <h4>{foto.fonte}</h4>
           <BotaoIcone>
-            <img src="/icones/favorito.png" alt="Favorito" />
+            <img src="/icones/favorito.png" alt="Icone de favorito" />
           </BotaoIcone>
-          {!expandida && aoZoomSolicitado && (
+          {!expandida && (
             <BotaoIcone
               aria-hidden={expandida}
               onClick={() => aoZoomSolicitado(foto)}
             >
-              <img src="/icones/expandir.png" alt="Ícone de expandir" />
+              <img src="/icones/expandir.png" alt="Icone de expandir" />
             </BotaoIcone>
           )}
         </Rodape>

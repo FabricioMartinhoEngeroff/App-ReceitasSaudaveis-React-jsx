@@ -6,15 +6,16 @@ import Banner from "./componentes/Banner";
 import bannerBackground from "./assets/banner_image.png";
 import Galeria from "./componentes/Galeria";
 
-import fotos from './fotos.json';
-import { useState } from "preact/hooks";
+import fotos from "./fotos.json";
+import { useState } from "react"
+import ModalZoom from "./componentes/ModalZoom";
 
 const FundoGradiente = styled.div`
   background: linear-gradient(
     174.61deg,
-    #aebf9f 4.16%, /* Verde claro com mais saturação */
-    #bcc9ad 48%, /* Verde intermediário */
-    #d3e0c5 96.76% /* Verde claro e suave */
+    #aebf9f 4.16%,
+    /* Verde claro com mais saturação */ #bcc9ad 48%,
+    /* Verde intermediário */ #d3e0c5 96.76% /* Verde claro e suave */
   );
   width: 100%;
   min-height: 100vh;
@@ -38,7 +39,8 @@ const ConteudoGaleria = styled.section`
 `;
 
 const App = () => {
-  const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos); 
+  const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
+  const { fotoSelecionada, setFotoSelecionada } = useState(null);
   return (
     <FundoGradiente>
       <EstilosGlobais />
@@ -51,10 +53,14 @@ const App = () => {
               texto="A galeria mais completa de fotos do espaço!"
               backgroundImage={bannerBackground}
             />
-            <Galeria fotos={fotosDaGaleria} />
+            <Galeria
+              aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
+              fotos={fotosDaGaleria}
+            />
           </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
+      <ModalZoom foto={fotoSelecionada} />
     </FundoGradiente>
   );
 };

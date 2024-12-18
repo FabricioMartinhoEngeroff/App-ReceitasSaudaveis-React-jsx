@@ -7,8 +7,9 @@ import bannerBackground from "./assets/banner_image.png";
 import Galeria from "./componentes/Galeria";
 
 import fotos from "./fotos.json";
-import { useState } from "react"
+
 import ModalZoom from "./componentes/ModalZoom";
+import { useState } from "react";
 
 const FundoGradiente = styled.div`
   background: linear-gradient(
@@ -40,7 +41,12 @@ const ConteudoGaleria = styled.section`
 
 const App = () => {
   const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
-  const { fotoSelecionada, setFotoSelecionada } = useState(null);
+  const [fotoSelecionada, setFotoSelecionada] = useState(null);
+
+  const aoFechar = () => {
+    setFotoSelecionada(null);
+  };
+
   return (
     <FundoGradiente>
       <EstilosGlobais />
@@ -50,7 +56,7 @@ const App = () => {
           <BarraLateral />
           <ConteudoGaleria>
             <Banner
-              texto="A galeria mais completa de fotos do espaço!"
+              texto="Receitas Mais Gostosas e Nutritivas que Você já viu!!!"
               backgroundImage={bannerBackground}
             />
             <Galeria
@@ -60,7 +66,7 @@ const App = () => {
           </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
-      <ModalZoom foto={fotoSelecionada} />
+      <ModalZoom foto={fotoSelecionada} aoFechar={aoFechar} />
     </FundoGradiente>
   );
 };

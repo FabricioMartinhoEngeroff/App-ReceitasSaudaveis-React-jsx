@@ -14,13 +14,16 @@ const SecaoFluida = styled.section`
 `;
 
 const ImagensContainer = styled.section`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
   gap: 24px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
-const Galeria = ({ fotos = [], aoFotoSelecionada }) => {
+const Galeria = ({ fotos = [], aoFotoSelecionada, aoAlternarFavorito}) => {
   return (
     <>
       <Tags />
@@ -29,8 +32,8 @@ const Galeria = ({ fotos = [], aoFotoSelecionada }) => {
           <Titulo>Navegue pela galeria</Titulo>
           <ImagensContainer>
             {fotos.map((foto) => (
-              
               <Imagem
+              aoAlternarFavorito={aoAlternarFavorito}
                 aoZoomSolicitado={aoFotoSelecionada}
                 key={foto.id}
                 foto={foto}

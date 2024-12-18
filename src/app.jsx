@@ -47,6 +47,18 @@ const App = () => {
     setFotoSelecionada(null);
   };
 
+  const aoAlternarFavorito = (foto) => {
+    setFotosDaGaleria(
+      fotosDaGaleria.map((fotoDaGaleria) => {
+        return {
+          ...fotoDaGaleria,
+          favorita:
+            fotoDaGaleria.id === foto.id ? !foto.favorita : fotoDaGaleria.favorita,
+        };
+      })
+    );
+  };
+
   return (
     <FundoGradiente>
       <EstilosGlobais />
@@ -61,6 +73,7 @@ const App = () => {
             />
             <Galeria
               aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
+              aoAlternarFavorito={aoAlternarFavorito}
               fotos={fotosDaGaleria}
             />
           </ConteudoGaleria>

@@ -15,7 +15,7 @@ const SecaoFluida = styled.section`
 
 const ImagensContainer = styled.section`
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 
   @media (max-width: 768px) {
@@ -23,17 +23,26 @@ const ImagensContainer = styled.section`
   }
 `;
 
-const Galeria = ({ fotos = [], aoFotoSelecionada, aoAlternarFavorito}) => {
+const Galeria = ({
+  fotos = [],
+  tagSelecionada,
+  setTagSelecionada,
+  aoFotoSelecionada,
+  aoAlternarFavorito,
+}) => {
   return (
     <>
-      <Tags />
+      <Tags
+        tagSelecionada={tagSelecionada}
+        setTagSelecionada={setTagSelecionada}
+      />
       <GaleriaContainer>
         <SecaoFluida>
           <Titulo>Navegue pela galeria</Titulo>
           <ImagensContainer>
             {fotos.map((foto) => (
               <Imagem
-              aoAlternarFavorito={aoAlternarFavorito}
+                aoAlternarFavorito={aoAlternarFavorito}
                 aoZoomSolicitado={aoFotoSelecionada}
                 key={foto.id}
                 foto={foto}

@@ -16,9 +16,9 @@ const Imagem = styled.img`
 
 const Botao = styled.button`
   background-color: transparent;
-  color: #fff;
+  color: #147a03;;
   border: 2px solid;
-  border-color: #c98cf1;
+  border-color: #147a03;
   padding: 12px 20px;
   font-size: 20px;
   border-radius: 10px;

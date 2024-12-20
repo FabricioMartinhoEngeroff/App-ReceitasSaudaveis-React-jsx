@@ -30,18 +30,25 @@ const DialogEstilizado = styled.dialog`
   }
 `;
 
-const ModalZoom = ({ foto, aoFechar }) => {
-  if (!foto) return null; 
+const ModalZoom = ({ foto, aoFechar, aoAlternarFavorito }) => {
+  if (!foto) return null;
 
   return (
     <>
       <Overlay onClick={aoFechar} />
       <DialogEstilizado open={!!foto} onClose={aoFechar}>
-        <Imagem foto={foto} expandida />
-        <form method="dialog" onSubmit={(e) => {
+        <Imagem
+          foto={foto}
+          expandida={true}
+          aoAlternarFavorito={aoAlternarFavorito}
+        />
+        <form
+          method="dialog"
+          onSubmit={(e) => {
             e.preventDefault();
             aoFechar();
-        }}>
+          }}
+        >
           <BotaoIcone formMethod="dialog" onClick={aoFechar}>
             <img src="/icones/fechar.png" alt="Icone de fechar" />
           </BotaoIcone>
@@ -50,6 +57,5 @@ const ModalZoom = ({ foto, aoFechar }) => {
     </>
   );
 };
-
 
 export default ModalZoom;

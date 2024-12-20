@@ -1,48 +1,56 @@
 import styled from "styled-components";
 import tags from "./tags.json";
-import Titulo from "../../Titulo";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Adds spacing between the title and tags */
+  gap: 20px; /* Espaçamento entre título e lista de tags */
 `;
 
 const TagsList = styled.ul`
   display: flex;
-  flex-wrap: wrap; /* Allows tags to wrap to the next line */
-  gap: 10px; /* Adds spacing between each tag */
+  flex-wrap: wrap; /* Permite que as tags quebrem para a próxima linha */
+  gap: 10px; /* Espaçamento entre as tags */
   padding: 0;
   margin: 0;
   list-style: none;
 `;
 
 const TagItem = styled.li`
-  border: 2px solid #e591f1;
+  border: 2px solid ${({ ativo }) => (ativo ? "#629359" : "#147a03")};
+  background-color: ${({ ativo }) => (ativo ? "#629359" : "#147a03")};
+  color: ${({ ativo }) => (ativo ? "#FFFFFF" : "#060606")};
   padding: 5px 10px;
   border-radius: 10px;
-  background-color:  #e591f1;;
-  color: #060606;
-  font-size: 14px;
+  cursor: pointer;
 `;
 
 const TituloTag = styled.h1`
-  border: 2px solid #e591f1;
+  border: 2px solid #147a03;
   padding: 5px 10px;
   border-radius: 10px;
-  background-color: #e591f1;
-  color: #090909; 
+  background-color: #147a03;
+  color: #090909;
   font-size: 14px;
 `;
 
+const Tags = ({ tagSelecionada, setTagSelecionada }) => {
+  const alterarTag = (tag) => {
+    setTagSelecionada(tag);
+  };
 
-const Tags = () => {
   return (
     <Container>
-        <TagsList>
-         <TituloTag>Busque por Tags:</TituloTag>   
+      <TituloTag>Busque por Tags:</TituloTag>
+      <TagsList>
         {tags.map((tag) => (
-          <TagItem key={tag.id}>{tag.titulo}</TagItem>
+          <TagItem
+            key={tag.id}
+            onClick={() => alterarTag(tag.titulo)}
+            ativo={tagSelecionada === tag.titulo}
+          >
+            {tag.titulo}
+          </TagItem>
         ))}
       </TagsList>
     </Container>

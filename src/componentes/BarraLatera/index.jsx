@@ -9,8 +9,6 @@ const ListaEstilizada = styled.ul`
   width: 212px;
 `;
 
-
-
 const BarraLateral = () => {
   return (
     <aside>
@@ -25,7 +23,6 @@ const BarraLateral = () => {
           <ItemNavegacao
             iconeAtivo="/icones/mais-vistas-ativo.png"
             iconeInativo="/icones/mais-vistas-inativo.png"
-            
           >
             Mais vistas
           </ItemNavegacao>

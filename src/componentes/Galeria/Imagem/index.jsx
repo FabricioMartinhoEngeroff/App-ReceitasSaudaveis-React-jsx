@@ -14,7 +14,7 @@ const Figure = styled.figure`
     border-radius: 20px 20px 0 0;
   }
   figcaption {
-    background-color: #e591f1;
+    background-color: #629359;
     border-radius: 0px 0px 20px 20px;
     color: black;
     padding: 12px;
@@ -26,9 +26,15 @@ const Rodape = styled.footer`
   justify-content: space-between;
   align-items: center;
 `;
-const Imagem = ({ foto, expandida = false, aoZoomSolicitado, aoAlternarFavorito }) => {
-
-  const iconeFavorito = foto.favorita ? '/icones/favorito-ativo.png' : '/icones/favorito.png';
+const Imagem = ({
+  foto,
+  expandida = false,
+  aoZoomSolicitado,
+  aoAlternarFavorito,
+}) => {
+  const iconeFavorito = foto.favorita
+    ? "/icones/favorito-ativo.png"
+    : "/icones/favorito.png";
 
   return (
     <Figure $expandida={expandida} id={`foto-${foto.id}`}>

@@ -1,22 +1,21 @@
 [
     {
-        "id": 0,
-        "titulo": "Todas"
+      "id": 1,
+      "titulo": "Foto 1",
+      "tags": ["Estrelas", "Galáxias"],
+      "favorita": false
     },
     {
-        "id": 1,
-        "titulo": "Estrelas"
+      "id": 2,
+      "titulo": "Foto 2",
+      "tags": ["Luas"],
+      "favorita": true
     },
     {
-        "id": 2,
-        "titulo": "Galáxias"
-    },
-    {
-        "id": 3,
-        "titulo": "Luas"
-    },
-    {
-        "id": 4,
-        "titulo": "Nebulosas"
+      "id": 3,
+      "titulo": "Foto 3",
+      "tags": ["Nebulosas"],
+      "favorita": false
     }
-]
+  ]
+  

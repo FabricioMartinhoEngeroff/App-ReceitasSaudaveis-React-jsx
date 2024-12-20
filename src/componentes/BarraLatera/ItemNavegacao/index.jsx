@@ -17,10 +17,10 @@ const TextoComBorda = styled.span`
   display: flex;
   align-items: center;
   gap: 10px; 
-  border: 2px solid #e591f1;
+  border: 2px solid  #629359;
   padding: 5px 10px;
   border-radius: 10px;
-  background-color: #e591f1; 
+  background-color: #629359; 
 `;
 const ItemNavegacao = ({children, iconeAtivo, iconeInativo, ativo = false}) => {
   return <ItemListaEstilizado  $ativo={ativo}>

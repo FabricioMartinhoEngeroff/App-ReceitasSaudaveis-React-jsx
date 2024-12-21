@@ -1,24 +1,25 @@
 import styled from "styled-components";
 import search from "./search.png";
+import Titulo from "../Titulo";
 
 const ContainerEstilizado = styled.div`
-position: relative;
-display: inline-block;
-`
+  position: relative;
+  display: inline-block;
+`;
 
 const CampoTextoEstilizado = styled.input`
-height: 56px;
-padding: 12px 16px;
-border-radius: 10px;
-border: 2px solid;
-border-color:  #147a03;
-background-color: #d1f5d0; 
-box-sizing: border-box;
-width: 566px;
-color: black;
-font-weight:400;
-font-size: 20px;
-line-height:20px;
+  height: 40px;
+  padding: 5px 5px;
+  border-radius: 10px;
+  border: 2px solid;
+  border-color: #147a03;
+  background-color: #d1f5d0;
+  box-sizing: border-box;
+  width: 500px;
+  color: black;
+  font-weight: 50;
+  font-size: 20px;
+  line-height: 20px;
 `;
 
 const IconeLupa = styled.img`
@@ -29,13 +30,15 @@ const IconeLupa = styled.img`
   height: 38px;
 `;
 
-
 const CampoTexto = (props) => {
   return (
-    <ContainerEstilizado>
-      <CampoTextoEstilizado {...props} />
-      <IconeLupa src={search} alt="ícone de lupa" />
-    </ContainerEstilizado>
+    <Titulo>
+      Busque sua Receita Desejada
+      <ContainerEstilizado>
+        <CampoTextoEstilizado {...props} />
+        <IconeLupa src={search} alt="ícone de lupa" />
+      </ContainerEstilizado>
+    </Titulo>
   );
 };
 

@@ -3,27 +3,30 @@ import Titulo from "../../Titulo";
 
 import fotos from "./fotos-populares.json";
 
-const ColunaFotos = styled.section`
+const HorizontalFotos = styled.section`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 16px;
+  overflow-x: auto;
+  padding: 8px 0;
 `;
 
 const Imagem = styled.img`
   max-width: 212px;
   border-radius: 20px;
+  flex-shrink: 0; 
 `;
 
 const Botao = styled.button`
   background-color: transparent;
-  color: #147a03;;
-  border: 2px solid;
-  border-color: #147a03;
+  color: #147a03;
+  border: 2px solid #147a03;
   padding: 12px 20px;
   font-size: 20px;
   border-radius: 10px;
   cursor: pointer;
-  width: 100%;
+  width: 50%;
+
   margin-top: 16px;
 `;
 
@@ -31,12 +34,11 @@ const Populares = () => {
   return (
     <section>
       <Titulo $alinhamento="center">Populares</Titulo>
-      <ColunaFotos>
+      <HorizontalFotos>
         {fotos.map((foto) => (
           <Imagem key={foto.id} src={foto.path} alt={foto.alt} />
         ))}
-      </ColunaFotos>
-      <Botao>Ver mais</Botao>
+      </HorizontalFotos>
     </section>
   );
 };

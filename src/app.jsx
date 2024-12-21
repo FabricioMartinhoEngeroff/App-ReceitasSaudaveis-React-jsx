@@ -2,8 +2,6 @@ import styled from "styled-components";
 import EstilosGlobais from "./componentes/EstilosGlobais";
 import Cabecalho from "./componentes/Cabecalho";
 import BarraLateral from "./componentes/BarraLatera";
-import Banner from "./componentes/Banner";
-import bannerBackground from "./assets/banner_image.png";
 import Galeria from "./componentes/Galeria";
 import ModalZoom from "./componentes/ModalZoom";
 import Footer from "./componentes/Rodape";
@@ -45,24 +43,6 @@ const App = () => {
   const [filtro, setFiltro] = useState("");
   const [tagSelecionada, setTagSelecionada] = useState("Todas");
 
-  useEffect(() => {
-    let fotosFiltradas = fotosIniciais;
-
-    if (tagSelecionada !== "Todas") {
-      fotosFiltradas = fotosFiltradas.filter((foto) =>
-        foto.tags.includes(tagSelecionada)
-      );
-    }
-
-    if (filtro) {
-      fotosFiltradas = fotosFiltradas.filter((foto) =>
-        foto.titulo.toLowerCase().includes(filtro.toLowerCase())
-      );
-    }
-
-    setFotosDaGaleria(fotosFiltradas);
-  }, [filtro, tagSelecionada]);
-
   const aoFechar = () => {
     setFotoSelecionada(null);
   };
@@ -89,10 +69,6 @@ const App = () => {
         <MainContainer>
           <BarraLateral />
           <ConteudoGaleria>
-            <Banner
-              texto="Receitas Mais Gostosas e Nutritivas que Você já viu!!!"
-              backgroundImage={bannerBackground}
-            />
             <Galeria
               aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
               aoAlternarFavorito={aoAlternarFavorito}

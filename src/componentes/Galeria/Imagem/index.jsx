@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import BotaoIcone from "../../BotaoIcone";
+import { useState } from "preact/hooks";
 
 const Figure = styled.figure`
   width: ${(props) => (props.$expandida ? "90%" : "460px")};
@@ -26,34 +27,33 @@ const Rodape = styled.footer`
   justify-content: space-between;
   align-items: center;
 `;
-const Imagem = ({
-  foto,
-  expandida = false,
-  aoZoomSolicitado,
-  aoAlternarFavorito,
-}) => {
-  const iconeFavorito = foto.favorita
+
+const Imagem = ({ foto, aoZoomSolicitado }) => {
+  const [favorito, setFavorito] = useState(foto.favorita);
+
+  const alternarFavorito = () => {
+    setFavorito(!favorito);
+  };
+
+  const iconeFavorito = favorito
     ? "/icones/favorito-ativo.png"
     : "/icones/favorito.png";
 
   return (
-    <Figure $expandida={expandida} id={`foto-${foto.id}`}>
+    <Figure $expandida={false} id={`foto-${foto.id}`}>
       <img src={foto.path} alt={foto.alt} />
       <figcaption>
         <h3>{foto.titulo}</h3>
         <Rodape>
           <h4>{foto.fonte}</h4>
-          <BotaoIcone onClick={() => aoAlternarFavorito(foto)}>
-            <img src={iconeFavorito} alt="Icone de favorito" />
+          <BotaoIcone onClick={alternarFavorito}>
+            <img src={iconeFavorito} alt="Ícone de favorito" />
           </BotaoIcone>
-          {!expandida && (
-            <BotaoIcone
-              aria-hidden={expandida}
-              onClick={() => aoZoomSolicitado(foto)}
-            >
-              <img src="/icones/expandir.png" alt="Icone de expandir" />
-            </BotaoIcone>
-          )}
+          <BotaoIcone
+            onClick={() => aoZoomSolicitado(foto)}
+          >
+            <img src="/icones/expandir.png" alt="Ícone de expandir" />
+          </BotaoIcone>
         </Rodape>
       </figcaption>
     </Figure>

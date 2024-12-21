@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 import CampoTexto from "../CampoTexto";
-import Banner from "./Banner";
 
 const HeaderEstilizado = styled.header`
   padding: 0.5px 0;
@@ -18,9 +17,6 @@ const Cabecalho = () => {
     <HeaderEstilizado>
       <img src="/imagens/Logo.png" alt="" />
       <CampoTexto/>
-      <Banner
-          backgroundImage={bannerBackground}
-         />
     </HeaderEstilizado>
   );
 };

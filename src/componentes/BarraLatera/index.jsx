@@ -1,5 +1,5 @@
+import { useState } from "react";
 import styled from "styled-components";
-ItemNavegacao;
 import ItemNavegacao from "./ItemNavegacao";
 
 const ListaEstilizada = styled.ul`
@@ -9,42 +9,37 @@ const ListaEstilizada = styled.ul`
   width: 212px;
 `;
 
+const itens = [
+  { nome: "Início", icone: "/icones/home-ativo.png" },
+  { nome: "Mais vistas", icone: "/icones/mais-vistas-ativo.png" },
+  { nome: "Mais curtidas", icone: "/icones/mais-curtidas-ativo.png" },
+  { nome: "Novas", icone: "/icones/novas-ativo.png" },
+  { nome: "Surpreenda", icone: "/icones/surpreenda-me-ativo.png" },
+];
+
 const BarraLateral = () => {
+  const [ativo, setAtivo] = useState(itens[0].nome);
+
+  const handleClick = (nome) => {
+    setAtivo(nome);
+    console.log(`Item ativo: ${nome}`);
+    // Aqui, você pode integrar lógica para chamar o backend ou atualizar outros estados globais
+  };
+
   return (
     <aside>
       <nav>
         <ListaEstilizada>
-          <ItemNavegacao
-            iconeAtivo="/icones/home-ativo.png"
-            iconeInativo="/icones/home-inativo.png"
-          >
-            Início
-          </ItemNavegacao>
-          <ItemNavegacao
-            iconeAtivo="/icones/mais-vistas-ativo.png"
-            iconeInativo="/icones/mais-vistas-inativo.png"
-          >
-            Mais vistas
-          </ItemNavegacao>
-          <ItemNavegacao
-            iconeAtivo="/icones/mais-curtidas-ativo.png"
-            iconeInativo="/icones/mais-curtidas-inativo.png"
-            ativo={true}
-          >
-            Mais curtidas
-          </ItemNavegacao>
-          <ItemNavegacao
-            iconeAtivo="/icones/novas-ativo.png"
-            iconeInativo="/icones/novas-inativo.png"
-          >
-            Novas
-          </ItemNavegacao>
-          <ItemNavegacao
-            iconeAtivo="/icones/surpreenda-me-ativo.png"
-            iconeInativo="/icones/surpreenda-me-inativo.png"
-          >
-            Surpreenda
-          </ItemNavegacao>
+          {itens.map(({ nome, icone }) => (
+            <ItemNavegacao
+              key={nome}
+              icone={icone}
+              ativo={ativo === nome}
+              onClick={() => handleClick(nome)}
+            >
+              {nome}
+            </ItemNavegacao>
+          ))}
         </ListaEstilizada>
       </nav>
     </aside>

@@ -33,7 +33,7 @@ const Botao = styled.button`
 const Populares = () => {
   return (
     <section>
-      <Titulo $alinhamento="center">Populares</Titulo>
+      <Titulo $alinhamento="left">Populares</Titulo>
       <HorizontalFotos>
         {fotos.map((foto) => (
           <Imagem key={foto.id} src={foto.path} alt={foto.alt} />

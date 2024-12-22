@@ -1,12 +1,17 @@
-import { useState } from "react";
 import styled from "styled-components";
 import ItemNavegacao from "./ItemNavegacao";
+import { useState } from "react";
 
 const ListaEstilizada = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 212px;
+ 
+  width: 170px; 
+`;
+
+const NavegacaoContainer = styled.nav`
+  margin-top: 20px; 
 `;
 
 const itens = [
@@ -23,12 +28,12 @@ const BarraLateral = () => {
   const handleClick = (nome) => {
     setAtivo(nome);
     console.log(`Item ativo: ${nome}`);
-    // Aqui, você pode integrar lógica para chamar o backend ou atualizar outros estados globais
+    // Integre lógica adicional aqui, se necessário
   };
 
   return (
     <aside>
-      <nav>
+      <NavegacaoContainer>
         <ListaEstilizada>
           {itens.map(({ nome, icone }) => (
             <ItemNavegacao
@@ -41,7 +46,7 @@ const BarraLateral = () => {
             </ItemNavegacao>
           ))}
         </ListaEstilizada>
-      </nav>
+      </NavegacaoContainer>
     </aside>
   );
 };

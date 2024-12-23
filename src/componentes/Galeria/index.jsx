@@ -33,7 +33,7 @@ const ImagemItem = styled(Imagem)`
 const Galeria = ({ fotos = [], aoFotoSelecionada, aoAlternarFavorito }) => {
   const modulos = [
     { titulo: "Populares", fotos: fotos.slice(0, 5) },
-    { titulo: "Novas Adições", fotos: fotos.slice(5, 10) },
+    { titulo: "Receitas Rapidas Reels", fotos: fotos.slice(5, 10) },
     { titulo: "Favoritos", fotos: fotos.slice(10, 15) },
   ];
 

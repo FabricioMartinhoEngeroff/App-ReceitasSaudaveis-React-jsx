@@ -1,0 +1,141 @@
+[
+    {
+      "id": 1,
+      "path": "/videos/Bolo-de-Cenoura-Facil.mp4",
+      "title": "Bolo de Cenoura Fácil",
+      "description": "Aprenda a fazer um bolo de cenoura simples e delicioso."
+    },
+    {
+      "id": 2,
+      "path": "/videos/Bolo-de-Cenoura.mp4",
+      "title": "Bolo de Cenoura",
+      "description": "Receita tradicional de bolo de cenoura com cobertura."
+    },
+    {
+      "id": 3,
+      "path": "/videos/Bolo-de-Chocolate.mp4",
+      "title": "Bolo de Chocolate",
+      "description": "Um bolo de chocolate super fofo e saboroso."
+    },
+    {
+      "id": 4,
+      "path": "/videos/Bolo-de-Laranja.mp4",
+      "title": "Bolo de Laranja",
+      "description": "Delicioso bolo de laranja com sabor cítrico marcante."
+    },
+    {
+      "id": 5,
+      "path": "/videos/Bolo-de-Limao-com-Geleia.mp4",
+      "title": "Bolo de Limão com Geleia",
+      "description": "Receita leve de bolo de limão recheado com geleia."
+    },
+    {
+      "id": 6,
+      "path": "/videos/Bolo-de-Milho.mp4",
+      "title": "Bolo de Milho",
+      "description": "Bolo de milho fácil e perfeito para o café da tarde."
+    },
+    {
+      "id": 7,
+      "path": "/videos/Bolo-de-Pote-Proteico.mp4",
+      "title": "Bolo de Pote Proteico",
+      "description": "Uma opção saudável e prática de bolo proteico."
+    },
+    {
+      "id": 8,
+      "path": "/videos/Bolachuca-de-Banana.mp4",
+      "title": "Bolachuca de Banana",
+      "description": "Biscoito de banana perfeito para acompanhar o café."
+    },
+    {
+      "id": 9,
+      "path": "/videos/Bolo-de-Salada-Verde.mp4",
+      "title": "Bolo de Salada Verde",
+      "description": "Um bolo salgado e saudável feito com salada verde."
+    },
+    {
+      "id": 10,
+      "path": "/videos/Brownie-no-Pote.mp4",
+      "title": "Brownie no Pote",
+      "description": "Delicioso brownie no pote para sobremesa ou presente."
+    },
+    {
+      "id": 11,
+      "path": "/videos/Cuca-de-Uva-e-Banana.mp4",
+      "title": "Cuca de Uva e Banana",
+      "description": "Cuca tradicional feita com uva e banana, perfeita para o lanche."
+    },
+    {
+      "id": 12,
+      "path": "/videos/Escondidinho-com-Burrata.mp4",
+      "title": "Escondidinho com Burrata",
+      "description": "Uma versão sofisticada de escondidinho com burrata."
+    },
+    {
+      "id": 13,
+      "path": "/videos/Granola-Crocante-com-Creme-de-Ovo.mp4",
+      "title": "Granola Crocante com Creme de Ovo",
+      "description": "Granola caseira com um delicioso creme de ovo."
+    },
+    {
+      "id": 14,
+      "path": "/videos/Iogurte-Natural.mp4",
+      "title": "Iogurte Natural",
+      "description": "Aprenda a preparar iogurte natural em casa."
+    },
+    {
+      "id": 15,
+      "path": "/videos/Legumes-Assados.mp4",
+      "title": "Legumes Assados",
+      "description": "Receita simples e deliciosa de legumes assados."
+    },
+    {
+      "id": 16,
+      "path": "/videos/Mingau-de-Aveia.mp4",
+      "title": "Mingau de Aveia",
+      "description": "Mingau saudável e reconfortante feito com aveia."
+    },
+    {
+      "id": 17,
+      "path": "/videos/Mousse-de-Morango.mp4",
+      "title": "Mousse de Morango",
+      "description": "Sobremesa leve e cremosa de morango."
+    },
+    {
+      "id": 18,
+      "path": "/videos/Nega-Maluca.mp4",
+      "title": "Nega Maluca",
+      "description": "Bolo de chocolate tradicional e irresistível."
+    },
+    {
+      "id": 19,
+      "path": "/videos/Omelete-com-Sabores.mp4",
+      "title": "Omelete com Sabores",
+      "description": "Uma receita de omelete variada e cheia de sabores."
+    },
+    {
+      "id": 20,
+      "path": "/videos/Pao-Integral.mp4",
+      "title": "Pão Integral",
+      "description": "Receita saudável de pão integral caseiro."
+    },
+    {
+      "id": 21,
+      "path": "/videos/Pao-de-Queijo-Crocante.mp4",
+      "title": "Pão de Queijo Crocante",
+      "description": "Pão de queijo com textura crocante por fora e macio por dentro."
+    },
+    {
+      "id": 22,
+      "path": "/videos/Sobremesa-de-Morango.mp4",
+      "title": "Sobremesa de Morango",
+      "description": "Uma deliciosa sobremesa de morango para qualquer ocasião."
+    },
+    {
+      "id": 23,
+      "path": "/videos/Torta-de-Banana-Facil.mp4",
+      "title": "Torta de Banana Fácil",
+      "description": "Receita prática e deliciosa de torta de banana."
+    }
+  ]
+  

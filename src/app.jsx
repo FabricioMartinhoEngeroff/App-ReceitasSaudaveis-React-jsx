@@ -9,6 +9,7 @@ import Footer from "./componentes/Rodape";
 import { useState, useEffect } from "react";
 import fotosIniciais from "./fotos.json";
 
+
 const FundoGradiente = styled.div`
   background: linear-gradient(
     174.61deg,
@@ -42,6 +43,7 @@ const App = () => {
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
   const [filtro, setFiltro] = useState("");
   const [tagSelecionada, setTagSelecionada] = useState("Todas");
+  const[videoReels, setVideoReels] = useState();
 
   const aoFechar = () => {
     setFotoSelecionada(null);

@@ -6,12 +6,12 @@ const ListaEstilizada = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
- 
-  width: 170px; 
+
+  width: 170px;
 `;
 
 const NavegacaoContainer = styled.nav`
-  margin-top: 20px; 
+  margin-top: 20px;
 `;
 
 const itens = [

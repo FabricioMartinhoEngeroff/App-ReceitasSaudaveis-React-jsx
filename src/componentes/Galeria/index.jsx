@@ -5,7 +5,7 @@ import Imagem from "./Imagem";
 
 const GaleriaContainer = styled.div`
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   flex-grow: 1;
   padding: 8px 16px;
 `;

@@ -4,7 +4,7 @@ import Titulo from "../Titulo";
 
 const HeaderEstilizado = styled.header`
   background-color: #629359;
-  padding: 10px 20px; /* Ajusta o padding */
+  padding: 20px 20px; /* Ajusta o padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,10 +12,9 @@ const HeaderEstilizado = styled.header`
   height: 100px;
 
   img {
- 
-  object-fit: contain; /* Garante que a imagem não distorce */
+    object-fit: contain; /* Garante que a imagem não distorce */
 
-    max-height: 80px; /* Ajusta o tamanho para caber no header */
+    max-height: 100px; /* Ajusta o tamanho para caber no header */
     border: none;
     margin: 0;
     padding: 0;

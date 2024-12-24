@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import EstilosGlobais from "./componentes/EstilosGlobais";
 import Cabecalho from "./componentes/Cabecalho";
-import BarraLateral from "./componentes/BarraLatera";
+import BarraLateral from "./componentes/BarraLateral";
 import Galeria from "./componentes/Galeria";
+import GaleriaDeVideos from "./componentes/GaleriaVideos";
 import ModalZoom from "./componentes/ModalZoom";
 import Footer from "./componentes/Rodape";
+import ModalVideoZoom from "./componentes/GaleriaVideos/ModalVideosZoom";
 
-import { useState, useEffect } from "react";
 import fotosIniciais from "./fotos.json";
-
+import videosIniciais from "./videos-reels.json";
+import { useState } from "preact/hooks";
 
 const FundoGradiente = styled.div`
   background: linear-gradient(
@@ -22,14 +24,18 @@ const FundoGradiente = styled.div`
 `;
 
 const AppContainer = styled.div`
-  width: 1440px;
+  width: 100%;
   margin: 0 auto;
-  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 `;
 
 const MainContainer = styled.main`
   display: flex;
   gap: 24px;
+  flex-grow: 1;
+  overflow-x: hidden;
 `;
 
 const ConteudoGaleria = styled.section`
@@ -39,26 +45,25 @@ const ConteudoGaleria = styled.section`
 `;
 
 const App = () => {
-  const [fotosDaGaleria, setFotosDaGaleria] = useState(fotosIniciais);
-  const [fotoSelecionada, setFotoSelecionada] = useState(null);
-  const [filtro, setFiltro] = useState("");
-  const [tagSelecionada, setTagSelecionada] = useState("Todas");
-  const[videoReels, setVideoReels] = useState();
+  const [fotosDaGaleria, setFotosDaGaleria] = useState(fotosIniciais); // Estado para fotos
+  const [fotoSelecionada, setFotoSelecionada] = useState(null); // Estado para foto selecionada
+  const [videosReels, setVideosReels] = useState(videosIniciais); // Estado para vídeos
+  const [videoSelecionado, setVideoSelecionado] = useState(null); // Estado para vídeo selecionado
 
-  const aoFechar = () => {
-    setFotoSelecionada(null);
-  };
-
-  const aoAlternarFavorito = (foto) => {
-    if (foto.id === fotoSelecionada?.id) {
-      setFotoSelecionada({
-        ...fotoSelecionada,
-        favorita: !fotoSelecionada.favorita,
-      });
-    }
+  // Alterna o estado de favorito de uma foto
+  const aoAlternarFavoritoFoto = (foto) => {
     setFotosDaGaleria((prevFotos) =>
       prevFotos.map((f) =>
         f.id === foto.id ? { ...f, favorita: !f.favorita } : f
+      )
+    );
+  };
+
+  // Alterna o estado de favorito de um vídeo
+  const aoAlternarFavoritoVideo = (videoId) => {
+    setVideosReels((prevVideos) =>
+      prevVideos.map((video) =>
+        video.id === videoId ? { ...video, favorita: !video.favorita } : video
       )
     );
   };
@@ -71,20 +76,25 @@ const App = () => {
         <MainContainer>
           <BarraLateral />
           <ConteudoGaleria>
-            <Galeria
-              aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
-              aoAlternarFavorito={aoAlternarFavorito}
-              fotos={fotosDaGaleria}
-              tagSelecionada={tagSelecionada}
-              setTagSelecionada={setTagSelecionada}
+            <GaleriaDeVideos
+              videos={videosReels}
+              aoVideoSelecionado={setVideoSelecionado}
+              aoAlternarFavorito={aoAlternarFavoritoVideo}
             />
           </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
+      {/* Modal para exibir detalhes da foto */}
       <ModalZoom
         foto={fotoSelecionada}
-        aoFechar={aoFechar}
-        aoAlternarFavorito={aoAlternarFavorito}
+        aoFechar={() => setFotoSelecionada(null)}
+        aoAlternarFavorito={aoAlternarFavoritoFoto}
+      />
+      {/* Modal para exibir detalhes do vídeo */}
+      <ModalVideoZoom
+        video={videoSelecionado}
+        aoFechar={() => setVideoSelecionado(null)}
+        aoAlternarFavorito={aoAlternarFavoritoVideo}
       />
       <Footer />
     </FundoGradiente>

@@ -12,7 +12,7 @@ const ItemListaEstilizado = styled.li`
   align-items: center;
 
   &:hover {
-    background-color: transparent; 
+    background-color: transparent;
   }
 `;
 
@@ -36,10 +36,8 @@ const Icone = styled.img`
   height: 24px;
   margin: 0;
   padding: 0;
-  opacity: ${(props) =>
-    props.$ativo ? 1 : 0.5};
-  filter: ${(props) =>
-    !props.$ativo ? "grayscale(100%)" : "none"}; 
+  opacity: ${(props) => (props.$ativo ? 1 : 0.5)};
+  filter: ${(props) => (!props.$ativo ? "grayscale(100%)" : "none")};
 `;
 
 const ItemNavegacao = ({ children, icone, ativo = false, onClick }) => {

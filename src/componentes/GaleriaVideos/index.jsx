@@ -1,74 +1,73 @@
+import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Importa os ícones
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Titulo from "../Titulo";
 import VideoItem from "./VideoItem";
-import { useRef, useState, useEffect } from "react";
 
+// Estilização do container principal da galeria
 const GaleriaContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
   flex-grow: 1;
-  max-width: 100%; /* Limita a largura ao tamanho da tela */
-  overflow: hidden; /* Previne o estouro do conteúdo */
+  max-width: 100%;
+  overflow: hidden;
 `;
 
+// Container de cada módulo (como "Receitas Rápidas", "Mais Visualizados")
 const ModuloContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding:0 10px;
-  max-width: 100%; 
+  padding: 0 10px;
+  max-width: 100%;
   overflow: hidden;
+  position: relative;
 `;
 
 const VideosContainerWrapper = styled.div`
   display: flex;
+  position: relative;
   width: 100%;
   max-width: 100%;
   overflow: hidden;
   padding: 0 16px;
+  height: 300px;
 `;
 
+// Adicione largura fixa para os itens de vídeo
 const VideosContainerHorizontal = styled.div`
   display: flex;
   gap: 12px;
-  overflow-x: auto; 
-  white-space: nowrap; 
-  padding: none;
+  overflow-x: auto;
+  white-space: nowrap;
   scroll-behavior: smooth;
 
-  &::-webkit-scrollbar {
-    display: none; 
+  & > div {
+    min-width: 200px;
   }
 
-  max-width: 100%; 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  max-width: 100%;
 `;
+
 const Seta = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
+  background: transparent;
   border: none;
-  color: white;
   font-size: 24px;
   cursor: pointer;
   z-index: 10;
-  padding: 8px;
 
   &.left {
-    left: 0; /* Alinha a seta ao limite esquerdo do contêiner */
-    margin-left: 8px; /* Espaço interno */
+    left: 0;
   }
-
   &.right {
-    right: 0; /* Alinha a seta ao limite direito do contêiner */
-    margin-right: 8px; /* Espaço interno */
-  }
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.7);
+    right: 0;
   }
 
   &:disabled {
@@ -82,66 +81,73 @@ const GaleriaDeVideos = ({
   aoVideoSelecionado,
   aoAlternarFavorito,
 }) => {
-  const [moduloRefs, setModuloRefs] = useState([]);
+  const modulos = [
+    { titulo: "Receitas Rápidas - Reels", videos: videos.slice(0, 10) },
+    { titulo: "Mais Visualizados", videos: videos.slice(10, 20) },
+  ];
 
-  // Função para rolar a lista
-  const rolarPara = (direcao, ref) => {
-    if (ref.current) {
-      const largura = ref.current.offsetWidth;
-      ref.current.scrollBy({
-        left: direcao === "left" ? -largura : largura,
-        behavior: "smooth",
-      });
-    }
-  };
+  const [scrollStates, setScrollStates] = useState(
+    modulos.map(() => ({ scrollableLeft: false, scrollableRight: true }))
+  );
 
-  // Atualiza os estados de scroll para cada módulo
-  const verificarScroll = (ref, index) => {
-    if (ref.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = ref.current;
-      setModuloRefs((prev) =>
-        prev.map((modulo, i) =>
+  const refs = useRef([]);
+  useEffect(() => {
+    refs.current = modulos.map(() => React.createRef());
+  }, [modulos]);
+
+  const verificarScroll = (index) => {
+    const container = refs.current[index]?.current;
+    if (container) {
+      const { scrollLeft, scrollWidth, clientWidth } = container;
+      const isScrollableLeft = scrollLeft > 0;
+      const isScrollableRight = scrollLeft + clientWidth < scrollWidth;
+
+      setScrollStates((prev) =>
+        prev.map((state, i) =>
           i === index
             ? {
-                ...modulo,
-                scrollableLeft: scrollLeft > 0,
-                scrollableRight: scrollLeft + clientWidth < scrollWidth,
+                scrollableLeft: isScrollableLeft,
+                scrollableRight: isScrollableRight,
               }
-            : modulo
+            : state
         )
       );
     }
   };
 
-  useEffect(() => {
-    const refs = modulos.map(() => ({
-      ref: useRef(null),
-      scrollableLeft: false,
-      scrollableRight: true,
-    }));
-    setModuloRefs(refs);
+  const rolarPara = (direcao, index) => {
+    const container = refs.current[index]?.current;
+    if (container) {
+      console.log(`Rolar para ${direcao} no módulo ${index}`);
+      const larguraItem = 200;
+      const larguraRolagem = larguraItem * 5;
+      container.scrollBy({
+        left: direcao === "left" ? -larguraRolagem : larguraRolagem,
+        behavior: "smooth",
+      });
+      console.log(
+        `ScrollLeft atual: ${container.scrollLeft}, ScrollWidth: ${container.scrollWidth}, ClientWidth: ${container.clientWidth}`
+      );
+    } else {
+      console.log(`Container não encontrado para o módulo ${index}`);
+    }
+  };
 
-    refs.forEach((modulo, index) => {
-      if (modulo.ref.current) {
-        modulo.ref.current.addEventListener("scroll", () =>
-          verificarScroll(modulo.ref, index)
+  useEffect(() => {
+    const handlers = [];
+    refs.current.forEach((ref, index) => {
+      const container = ref.current;
+      if (container) {
+        const handleScroll = () => verificarScroll(index);
+        container.addEventListener("scroll", handleScroll);
+        verificarScroll(index);
+        handlers.push(() =>
+          container.removeEventListener("scroll", handleScroll)
         );
       }
     });
-
-    return () => {
-      refs.forEach((modulo) => {
-        if (modulo.ref.current) {
-          modulo.ref.current.removeEventListener("scroll", verificarScroll);
-        }
-      });
-    };
-  }, []);
-
-  const modulos = [
-    { titulo: "Receitas Rápidas - Reels", videos: videos.slice(0, 10) },
-    { titulo: "Mais Visualizados", videos: videos.slice(10, 20) },
-  ];
+    return () => handlers.forEach((cleanup) => cleanup());
+  }, [modulos]);
 
   return (
     <GaleriaContainer>
@@ -149,16 +155,14 @@ const GaleriaDeVideos = ({
         <ModuloContainer key={index}>
           <Titulo>{modulo.titulo}</Titulo>
           <VideosContainerWrapper>
-            {/* Seta para a esquerda */}
             <Seta
               className="left"
-              onClick={() => rolarPara("left", moduloRefs[index]?.ref)}
-              disabled={!moduloRefs[index]?.scrollableLeft}
+              onClick={() => rolarPara("left", index)}
+              disabled={!scrollStates[index]?.scrollableLeft}
             >
-              <FaArrowLeft /> {/* Ícone da seta para a esquerda */}
+              <FaArrowLeft />
             </Seta>
-            {/* Contêiner dos vídeos */}
-            <VideosContainerHorizontal ref={moduloRefs[index]?.ref}>
+            <VideosContainerHorizontal ref={refs.current[index]}>
               {modulo.videos.map((video) => (
                 <VideoItem
                   key={video.id}
@@ -168,13 +172,12 @@ const GaleriaDeVideos = ({
                 />
               ))}
             </VideosContainerHorizontal>
-            {/* Seta para a direita */}
             <Seta
               className="right"
-              onClick={() => rolarPara("right", moduloRefs[index]?.ref)}
-              disabled={!moduloRefs[index]?.scrollableRight}
+              onClick={() => rolarPara("right", index)}
+              disabled={!scrollStates[index]?.scrollableRight}
             >
-              <FaArrowRight /> {/* Ícone da seta para a direita */}
+              <FaArrowRight />
             </Seta>
           </VideosContainerWrapper>
         </ModuloContainer>

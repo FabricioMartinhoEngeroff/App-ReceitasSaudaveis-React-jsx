@@ -12,10 +12,8 @@ const HeaderEstilizado = styled.header`
   height: 100px;
 
   img {
-    object-fit: contain; /* Garante que a imagem não distorce */
-
-    max-height: 100px; /* Ajusta o tamanho para caber no header */
-    border: none;
+    object-fit: contain;
+    max-height: 100px; 
     margin: 0;
     padding: 0;
     background: none;
@@ -25,8 +23,8 @@ const HeaderEstilizado = styled.header`
 const LogoETituloContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 15px; /* Ajusta o espaço entre logo e título */
-  overflow: hidden; /* Garante que não há espaços extras */
+  gap: 15px; 
+  overflow: hidden; 
 `;
 
 const CampoTextoContainer = styled.div`
@@ -40,7 +38,7 @@ const Cabecalho = () => {
   return (
     <HeaderEstilizado>
       <LogoETituloContainer>
-        <img src="/imagens/Logo.png" alt="Logo" />
+        <img src="/Logo.png" alt="Logo" />
         <Titulo>Vida Longa Flix</Titulo>
       </LogoETituloContainer>
       <CampoTextoContainer>

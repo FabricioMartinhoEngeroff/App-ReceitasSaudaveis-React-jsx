@@ -47,7 +47,7 @@ const VideoContainer = styled.div`
     max-width:100%;
     height: auto;
     border-radius: 8px;
-    aspect-ratio: 12/8;
+    aspect-ratio: 14/8;
     object-fit: contain;
   }
 `;

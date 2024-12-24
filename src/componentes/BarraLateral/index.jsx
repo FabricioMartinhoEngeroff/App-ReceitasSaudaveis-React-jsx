@@ -11,7 +11,8 @@ const ListaEstilizada = styled.ul`
 `;
 
 const NavegacaoContainer = styled.nav`
-  margin-top: 20px;
+  margin-top: 15px;
+  width: 130px;
 `;
 
 const itens = [

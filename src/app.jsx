@@ -1,16 +1,14 @@
 import styled from "styled-components";
+import { useState } from "preact/hooks";
+
 import EstilosGlobais from "./componentes/EstilosGlobais";
 import Cabecalho from "./componentes/Cabecalho";
 import BarraLateral from "./componentes/BarraLateral";
-import Galeria from "./componentes/Galeria";
 import GaleriaDeVideos from "./componentes/GaleriaVideos";
-import ModalZoom from "./componentes/ModalZoom";
-import Footer from "./componentes/Rodape";
 import ModalVideoZoom from "./componentes/GaleriaVideos/ModalVideosZoom";
+import Footer from "./componentes/Rodape";
 
-import fotosIniciais from "./fotos.json";
 import videosIniciais from "./videos-reels.json";
-import { useState } from "preact/hooks";
 
 const FundoGradiente = styled.div`
   background: linear-gradient(
@@ -45,21 +43,9 @@ const ConteudoGaleria = styled.section`
 `;
 
 const App = () => {
-  const [fotosDaGaleria, setFotosDaGaleria] = useState(fotosIniciais); // Estado para fotos
-  const [fotoSelecionada, setFotoSelecionada] = useState(null); // Estado para foto selecionada
-  const [videosReels, setVideosReels] = useState(videosIniciais); // Estado para vídeos
-  const [videoSelecionado, setVideoSelecionado] = useState(null); // Estado para vídeo selecionado
+  const [videosReels, setVideosReels] = useState(videosIniciais);
+  const [videoSelecionado, setVideoSelecionado] = useState(null);
 
-  // Alterna o estado de favorito de uma foto
-  const aoAlternarFavoritoFoto = (foto) => {
-    setFotosDaGaleria((prevFotos) =>
-      prevFotos.map((f) =>
-        f.id === foto.id ? { ...f, favorita: !f.favorita } : f
-      )
-    );
-  };
-
-  // Alterna o estado de favorito de um vídeo
   const aoAlternarFavoritoVideo = (videoId) => {
     setVideosReels((prevVideos) =>
       prevVideos.map((video) =>
@@ -83,20 +69,13 @@ const App = () => {
             />
           </ConteudoGaleria>
         </MainContainer>
+        <ModalVideoZoom
+          video={videoSelecionado}
+          aoFechar={() => setVideoSelecionado(null)}
+          aoAlternarFavorito={aoAlternarFavoritoVideo}
+        />
+        <Footer />
       </AppContainer>
-      {/* Modal para exibir detalhes da foto */}
-      <ModalZoom
-        foto={fotoSelecionada}
-        aoFechar={() => setFotoSelecionada(null)}
-        aoAlternarFavorito={aoAlternarFavoritoFoto}
-      />
-      {/* Modal para exibir detalhes do vídeo */}
-      <ModalVideoZoom
-        video={videoSelecionado}
-        aoFechar={() => setVideoSelecionado(null)}
-        aoAlternarFavorito={aoAlternarFavoritoVideo}
-      />
-      <Footer />
     </FundoGradiente>
   );
 };

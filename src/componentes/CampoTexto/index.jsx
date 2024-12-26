@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { FiSettings } from "react-icons/fi"; // Ícone de configurações do react-icons/fi
+import { FiSettings } from "react-icons/fi"; 
 import search from "./search.png";
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 0px; /* Espaço entre o campo de busca e a configuração */
+  gap: 0px; 
 `;
 
 const ContainerEstilizado = styled.div`
@@ -16,7 +16,7 @@ const ContainerEstilizado = styled.div`
 
 const CampoTextoEstilizado = styled.input`
   height: 40px;
-  padding: 0 100px 0 30px; /* Espaço para o ícone de busca */
+  padding: 0 100px 0 30px; 
   border-radius: 20px;
   border: 1px solid #147a03;
   background-color: #7ea76c;
@@ -48,14 +48,14 @@ const ConfiguracaoContainer = styled.div`
   padding: 0 10px 0 10px;
   align-items: center;
   justify-content: center;
-  width: auto; /* Ajusta dinamicamente ao conteúdo */
-  height: auto; /* Ajusta dinamicamente ao conteúdo */
+  width: auto; 
+  height: auto;
   cursor: pointer;
 
   svg {
-    width: 100px; /* Largura do ícone aumentada */
-    height: 25px; /* Altura do ícone ajustada para manter proporção */
-    color: black; /* Define a cor preta para o ícone */
+    width: 100px;
+    height: 25px; 
+    color: black; 
   }
 `;
 

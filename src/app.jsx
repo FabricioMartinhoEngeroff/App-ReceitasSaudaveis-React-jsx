@@ -4,11 +4,11 @@ import { useState } from "preact/hooks";
 import EstilosGlobais from "./componentes/EstilosGlobais";
 import Cabecalho from "./componentes/Cabecalho";
 import BarraLateral from "./componentes/BarraLateral";
-import GaleriaDeVideos from "./componentes/GaleriaVideos";
-import ModalVideoZoom from "./componentes/GaleriaVideos/ModalVideosZoom";
 import Footer from "./componentes/Rodape";
 
 import videosIniciais from "./videos-reels.json";
+import GaleriaDeVideos from "./componentes/GaleriaDeVideos";
+import ModalVideoZoom from "./componentes/GaleriaDeVideos/ModalVideosZoom";
 
 const FundoGradiente = styled.div`
   background: linear-gradient(

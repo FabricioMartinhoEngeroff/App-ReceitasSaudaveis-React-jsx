@@ -6,7 +6,7 @@ import {
   MdVolumeUp,
   MdSettings,
 } from "react-icons/md";
-import { FaRegClock } from "react-icons/fa"; // Ícone de duração do vídeo
+import { FaRegClock } from "react-icons/fa"; 
 
 const ModalBackground = styled.div`
   position: fixed;
@@ -26,14 +26,14 @@ const ModalContent = styled.div`
   background: #080808;
   padding: 20px;
   border-radius: 8px;
-  max-width: calc(60% + 10cm); /* Aumenta 5cm em cada lado */
-  max-height: calc(30% + 10cm); /* Aumenta 5cm em cada lado */
+  max-width: calc(60% + 10cm); 
+  max-height: calc(30% + 10cm);
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row; /* Layout lado a lado */
+  flex-direction: row; 
   gap: 20px;
-  overflow: hidden; /* Evita conteúdo fora do modal */
+  overflow: hidden; 
 `;
 
 const VideoContainer = styled.div`
@@ -44,7 +44,7 @@ const VideoContainer = styled.div`
 
   video {
     width: 100%;
-    max-width:100%;
+    max-width: 100%;
     height: auto;
     border-radius: 8px;
     aspect-ratio: 14/8;
@@ -118,17 +118,14 @@ const ModalVideoZoom = ({ video, aoFechar, aoAlternarFavorito }) => {
   return (
     <ModalBackground onClick={aoFechar}>
       <ModalContent onClick={(e) => e.stopPropagation()}>
-        {/* Botão de Fechar */}
         <CloseButton onClick={aoFechar}>
           <MdClose />
         </CloseButton>
-        {/* Vídeo e controles */}
         <VideoContainer>
           <video controls>
             <source src={video.path} type="video/mp4" />
             Seu navegador não suporta vídeos.
           </video>
-          {/* Barra de controles */}
           <ControlsBar>
             <ControlIcons>
               <FaRegClock title="Duração do vídeo" />

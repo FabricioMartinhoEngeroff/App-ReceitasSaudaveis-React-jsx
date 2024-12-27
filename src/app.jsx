@@ -1,14 +1,11 @@
 import styled from "styled-components";
-import { useState } from "preact/hooks";
-
-import EstilosGlobais from "./componentes/EstilosGlobais";
+import { VideoProvider } from "./context/VideoContext";
 import Cabecalho from "./componentes/Cabecalho";
 import BarraLateral from "./componentes/BarraLateral";
 import Footer from "./componentes/Rodape";
-
-import videosIniciais from "./videos-reels.json";
 import GaleriaDeVideos from "./componentes/GaleriaDeVideos";
-import ModalVideoZoom from "./componentes/GaleriaDeVideos/ModalVideosZoom";
+import ModalVideoZoom from "./componentes/ModalVideosZoom";
+import EstilosGlobais from "./componentes/EstilosGlobais";
 
 const FundoGradiente = styled.div`
   background: linear-gradient(
@@ -42,19 +39,8 @@ const ConteudoGaleria = styled.section`
   flex-grow: 1;
 `;
 
-const App = () => {
-  const [videosReels, setVideosReels] = useState(videosIniciais);
-  const [videoSelecionado, setVideoSelecionado] = useState(null);
-
-  const aoAlternarFavoritoVideo = (videoId) => {
-    setVideosReels((prevVideos) =>
-      prevVideos.map((video) =>
-        video.id === videoId ? { ...video, favorita: !video.favorita } : video
-      )
-    );
-  };
-
-  return (
+const App = () => (
+  <VideoProvider>
     <FundoGradiente>
       <EstilosGlobais />
       <AppContainer>
@@ -62,22 +48,14 @@ const App = () => {
         <MainContainer>
           <BarraLateral />
           <ConteudoGaleria>
-            <GaleriaDeVideos
-              videos={videosReels}
-              aoVideoSelecionado={setVideoSelecionado}
-              aoAlternarFavorito={aoAlternarFavoritoVideo}
-            />
+            <GaleriaDeVideos />
           </ConteudoGaleria>
         </MainContainer>
-        <ModalVideoZoom
-          video={videoSelecionado}
-          aoFechar={() => setVideoSelecionado(null)}
-          aoAlternarFavorito={aoAlternarFavoritoVideo}
-        />
+        <ModalVideoZoom />
         <Footer />
       </AppContainer>
     </FundoGradiente>
-  );
-};
+  </VideoProvider>
+);
 
 export default App;

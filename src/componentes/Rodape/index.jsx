@@ -6,7 +6,7 @@ const Rodape = styled.footer`
   align-items: center;
   padding: 12px;
   background-color: #629359;
-  color:black;
+  color: black;
   font-size: 14px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 `;
